@@ -1,0 +1,308 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil - Mini E-commerce</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Styles personnalisés ici */
+    .card {
+      margin-bottom: 20px;
+    }
+
+    /* Style pour les images de produit */
+    .card-img-product {
+      height: 200px; /* Hauteur fixe pour toutes les images */
+      object-fit: cover; /* Pour garder les proportions et couvrir toute la zone */
+    }
+
+    /* Style pour le footer */
+    footer {
+      background-color: #212529;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Mini E-commerce</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="panier.html">
+              Panier
+              <!-- Icône du panier avec la quantité -->
+              <span class="nav-cart-icon" id="cartIcon" style="display: none;">
+                <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png"/>
+                <span class="cart-quantity" id="cartQuantity"></span>
+              </span>
+            </a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenu de la page d'accueil -->
+  <div class="container mt-4">
+    <h1 class="text-center mb-5">Nos Produits</h1>
+    <div class="row">
+      <!-- Produit 1 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQltEZYh-8kwmJVgwJ7wIvSYec98Mu7RBxiP1P76YSEczTM9xh4TtiyaxLPpjM1qaYezCk24QkKOd9a-6L-VpYQcJ-fBt5nSbiTE5gfgCYB_G1y052Z5Y1nTQ&usqp=CAc" class="card-img-top card-img-product" alt="Produit 1">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Bluetooth</h5>
+            <p class="card-text">Description des écouteurs Bluetooth.</p>
+            <p class="card-text">Prix: $70</p>
+            <div class="form-group">
+            <label for="quantiteProduit1">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Produit 2 -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTEEz_At_NVVTsy63vkz-GZEGPhglHj8urBqHNI5AjHY0OiV8Jq7MQrOv1ilQpLWiyjWxSuptM8DOlj4n__4yYWh_ytWGkQQbSIGY3HVzLTmmhBV5mw0W6OfuP4z713&usqp=CAc" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $20</p>
+            <div class="form-group">
+            <label for="quantiteProduit2">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 3 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ0Up5LqHI7o6KDxl2Vkwd82kDFrop0wOivMfZU9aID5vaoQaizewr_qpOOEvMJ5mS5JIprNQSteY2cgiCLFrip3w4EsuHqB6wwAfQvam2vo-coayslzI3c7ALwJwrnUhVFtg-JdRr3Dw&usqp=CAc" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $40</p>
+
+            <div class="form-group">
+                <label for="quantiteProduit3">Quantité:</label>
+                <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+              </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 4 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT0l_-7gITlVG2Y8A1oqGSo8GfwexE3-m2-7ApEgtVDhgPEjUfB5mJx0TgAFT3sJ01ImmIrmphWJGIZoplidGAlReUb8qA9BDLhJmeEbjg2TA86lZ97_Q23dcUFl65MZeL_9Ukm9LXW&usqp=CAc" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $10</p>
+            <div class="form-group">
+            <label for="quantiteProduit4">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 5 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_DNi3ZzHY3SKtOfhfmp6igGrQsSN3xp7YDA&usqp=CAU" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $90</p>
+            <div class="form-group">
+            <label for="quantiteProduit5">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 6 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReC_Qq4vJ5JiSo7xU8v1kpeoaSR8EvpkZkPA&usqp=CAU" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $45</p>
+            <div class="form-group">
+            <label for="quantiteProduit6">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 7 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvniyFmiVuzYN7yuyYbPawvQkrMXn3AsWJSQ&usqp=CAU" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $50</p>
+            <div class="form-group">
+            <label for="quantiteProduit7">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 8 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBMG-HFy_SuIzMQXvQsqD6RTgXzPMZIhStsw&usqp=CAU" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $65</p>
+            <div class="form-group">
+            <label for="quantiteProduit8">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 9 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQah8laHaV99KC9L_5Wjz09864XhJmv7JdjaQ&usqp=CAU" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $33</p>
+            <div class="form-group">
+            <label for="quantiteProduit9">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 10 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn3-S52zS_ejRhrffRrRqFyNvaR6KHZZ6Mqg&usqp=CAU" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $102</p>
+            <div class="form-group">
+            <label for="quantiteProduit10">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 2 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT11jiooULkmwaDCMD-zucrAWEAlvo93mPR-Q&usqp=CAU" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $20</p>
+            <div class="form-group">
+            <label for="quantiteProduit11">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+       <!-- Produit 1 -->
+       <div class="col-md-4">
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrSESwvaNairUijPWPswpTYzjq22e0SRCEIg&usqp=CAU" class="card-img-top card-img-product" alt="Produit 2">
+          <div class="card-body">
+            <h5 class="card-title">Écouteurs Sans Fil</h5>
+            <p class="card-text">Description des écouteurs sans fil.</p>
+            <p class="card-text">Prix: $40</p>
+            <div class="form-group">
+            <label for="quantiteProduit12">Quantité:</label>
+            <input type="number" class="form-control quantite" id="quantiteProduit1" value="1" min="1">
+          </div>
+            <button class="btn btn-primary btn-ajouter" data-nom="Écouteurs Sans Fil" data-prix="70">Ajouter au Panier</button>          </div>
+        </div>
+      </div>
+      <!-- Ajouter d'autres produits de la même manière -->
+    </div>
+  </div>
+
+    <!-- Footer -->
+    <footer>
+        Mini E-commerce &copy; 2024
+      </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Fonction pour afficher la quantité d'articles dans le panier
+    function afficherQuantitePanier() {
+      var panier = JSON.parse(localStorage.getItem("panier")) || [];
+      var quantite = panier.reduce((total, produit) => total + produit.quantite, 0);
+      if (quantite > 0) {
+        $("#cartIcon").show();
+        $("#cartQuantity").text(quantite);
+      } else {
+        $("#cartIcon").hide();
+      }
+    }
+
+    // Appeler la fonction au chargement de la page
+    $(document).ready(function() {
+      afficherQuantitePanier();
+    });
+    $(document).ready(function() {
+      // Écouteur d'événement pour le clic sur le bouton "Ajouter au Panier"
+      $(".btn-ajouter").click(function() {
+        // Récupérer les données du produit depuis les attributs data
+        var nomProduit = $(this).data("nom");
+        var prixProduit = parseFloat($(this).data("prix"));
+        var imageProduit = $(this).closest(".card").find(".card-img-top").attr("src");
+        var quantiteProduit = parseInt($(this).closest(".card-body").find(".quantite").val());
+        
+        // Ajouter le produit au panier (stocker dans localStorage par exemple)
+        var panier = JSON.parse(localStorage.getItem("panier")) || [];
+        panier.push({ nom: nomProduit, prix: prixProduit, image: imageProduit, quantite: quantiteProduit });
+        localStorage.setItem("panier", JSON.stringify(panier));
+        
+        // Rediriger l'utilisateur vers la page du panier
+        window.location.href = "panier.html";
+      });
+    });
+  </script>
+  
+
+
+</body>
+</html>
