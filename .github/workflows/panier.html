@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panier - Mini E-commerce</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding-top: 70px; /* Pour éviter que le contenu ne soit caché par la barre de navigation */
+    }
+
+    #panier {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .produit {
+      border-bottom: 1px solid #dee2e6;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .produit:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .produit img {
+      max-width: 100px;
+      height: auto;
+    }
+
+    .produit .details {
+      padding-left: 20px;
+    }
+
+    .produit .details h5 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .produit .details p {
+      margin-bottom: 5px;
+    }
+
+    .total {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+/* Style pour le footer */
+footer {
+      background-color: #212529;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    @media (max-width: 576px) {
+      .btn-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Mini E-commerce</a>
+    </div>
+  </nav>
+
+  <!-- Contenu de la page panier -->
+  <div class="container mt-4">
+    <div id="panier">
+      <h1 class="mb-4">Panier</h1>
+      <div id="listeProduits">
+        <!-- Les produits seront affichés ici -->
+      </div>
+      <div class="total mt-4">
+        <p>Total: <span id="total"></span></p>
+      </div>
+      <div class="btn-container mt-4">
+        <button id="validerAchat" class="btn btn-primary">Valider l'achat</button>
+        <button id="viderPanier" class="btn btn-danger">Vider le panier</button>
+        <button id="choisirProduit" class="btn btn-info">Choisir un produit</button>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer>
+    Mini E-commerce &copy; 2024
+  </footer>
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      afficherProduits();
+      calculerTotal();
+
+      // Fonction pour afficher les produits dans le panier
+      function afficherProduits() {
+        var panier = JSON.parse(localStorage.getItem("panier")) || [];
+        var produitsHTML = "";
+        panier.forEach(function(produit, index) {
+          produitsHTML += `
+            <div class="produit">
+              <div class="row">
+                <div class="col-sm-3">
+                  <img src="${produit.image}" alt="Image du produit" class="img-thumbnail">
+                </div>
+                <div class="col-sm-6 details">
+                  <h5>${produit.nom}</h5>
+                  <p><strong>Prix unitaire:</strong> ${produit.prix} $</p>
+                  <div class="form-inline">
+                    <label for="quantite-${index}" class="mr-2">Quantité:</label>
+                    <input type="number" class="form-control input-quantite" id="quantite-${index}" value="${produit.quantite}" min="1" data-index="${index}">
+                    <button class="btn btn-primary ml-2 btn-mettre-a-jour" data-index="${index}">Mettre à jour</button>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-sm-12">
+                  <button class="btn btn-danger btn-supprimer" data-index="${index}">Supprimer</button>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        $("#listeProduits").html(produitsHTML);
+        $(".btn-supprimer").click(function() {
+          var index = $(this).data("index");
+          var panier = JSON.parse(localStorage.getItem("panier")) || [];
+          panier.splice(index, 1);
+          localStorage.setItem("panier", JSON.stringify(panier));
+          afficherProduits();
+          calculerTotal();
+        });
+        $(".btn-mettre-a-jour").click(function() {
+          var index = $(this).data("index");
+          var nouvelleQuantite = parseInt($("#quantite-" + index).val());
+          var panier = JSON.parse(localStorage.getItem("panier")) || [];
+          panier[index].quantite = nouvelleQuantite;
+          localStorage.setItem("panier", JSON.stringify(panier));
+          afficherProduits();
+          calculerTotal();
+        });
+        // Afficher le bouton "Choisir un produit" si le panier est vide
+        if (panier.length === 0) {
+          $("#choisirProduit").show();
+          $("#validerAchat").hide();
+          $("#viderPanier").hide();
+        } else {
+          $("#choisirProduit").hide();
+          $("#validerAchat").show();
+          $("#viderPanier").show();
+        }
+      }
+
+      // Fonction pour calculer le total du panier
+      function calculerTotal() {
+        var panier = JSON.parse(localStorage.getItem("panier")) || [];
+        var total = 0;
+        panier.forEach(function(produit) {
+          // Vérifier si les valeurs sont des nombres
+          if (!isNaN(produit.quantite) && !isNaN(produit.prix)) {
+            total += produit.quantite * produit.prix;
+          }
+        });
+        // Afficher le total seulement si c'est un nombre valide
+        if (!isNaN(total)) {
+          $("#total").text(total.toFixed(2) + " $");
+          if (total <= 0) {
+            $("#validerAchat").prop("disabled", true);
+          } else {
+            $("#validerAchat").prop("disabled", false);
+          }
+        } else {
+          $("#total").text("Erreur de calcul");
+        }
+      }
+
+      // Écouteur d'événement pour vider complètement le panier
+      $("#viderPanier").click(function() {
+        localStorage.removeItem("panier");
+        afficherProduits();
+        calculerTotal();
+      });
+
+      // Écouteur d'événement pour valider l'achat
+      $("#validerAchat").click(function() {
+        // Rediriger l'utilisateur vers la page de paiement
+        window.location.href = "paiement.html";
+      });
+
+      // Écouteur d'événement pour le bouton "Choisir un produit"
+      $("#choisirProduit").click(function() {
+        // Rediriger l'utilisateur vers la page d'accueil
+        window.location.href = "index.html";
+      });
+    });
+  </script>
+</body>
+</html>
